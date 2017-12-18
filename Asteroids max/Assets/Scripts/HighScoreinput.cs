@@ -81,7 +81,7 @@ public class HighScoreinput : MonoBehaviour
     {
         if (GUI.Button(new Rect(500, 320, 300, 100), "Submit"))
         {
-            GUI.TextField hinput = new GUI.TextField(new Rect(500, 100, 300, 100), "Start Game");
+           // GUI.TextField hinput = new GUI.TextField(new Rect(500, 100, 300, 100), "Start Game");
 
         }
     }
