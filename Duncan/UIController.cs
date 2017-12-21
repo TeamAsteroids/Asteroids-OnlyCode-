@@ -8,6 +8,7 @@ public class UIController : MonoBehaviour {
     GameObject playerInstance;
 
     public int numLives = 4;
+    public double score = 0;
     float respawnTimer;
     public double wave = 1;
 
@@ -48,6 +49,7 @@ public class UIController : MonoBehaviour {
         }
 
         WaveUpdate();
+        ScoreUpdate();
     }
 
     void WaveUpdate()
@@ -59,5 +61,15 @@ public class UIController : MonoBehaviour {
 
         GUI.Label(new Rect(100, 0, 300, 200), "Wave: " + wave);
 
+    }
+
+    void ScoreUpdate()
+    {
+        if (Input.GetKeyUp(KeyCode.X))
+        {
+            score += 100;
+        }
+
+        GUI.Label(new Rect(200, 0, 300, 200), "Score: " + score);
     }
 }
