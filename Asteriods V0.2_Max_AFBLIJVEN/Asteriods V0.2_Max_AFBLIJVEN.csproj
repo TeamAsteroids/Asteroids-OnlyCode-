@@ -283,6 +283,7 @@
     <Compile Include="Assets\Scripts\options.cs" />
     <Compile Include="Assets\Scripts\options2.cs" />
     <Compile Include="Assets\Scripts\PlayerMovement.cs" />
+    <Compile Include="Assets\Scripts\ScreenWrapper.cs" />
     <Compile Include="Assets\Scripts\spawnController.cs" />
     <Compile Include="Assets\Scripts\VirtualKeyboard.cs" />
   </ItemGroup>

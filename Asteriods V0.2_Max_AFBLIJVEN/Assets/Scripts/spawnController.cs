@@ -14,7 +14,8 @@ public class spawnController : MonoBehaviour
     public GameObject[] prefeb;
     public GameObject ship;
     private Camera cam;
-    public float radius = 10f;
+    public float radiusSchip = 1f;
+    public float radiusScreen = 1000f;
 
 
     void Start()
@@ -51,8 +52,8 @@ public class spawnController : MonoBehaviour
 
    
         BoxCollider2D jeff = new BoxCollider2D();
-        Debug.Log(Physics2D.OverlapCircle(screenPosition, radius));
-         if (Physics2D.OverlapCircle(playerPos, radius) == jeff || Physics2D.OverlapCircle(playerPos, radius) == null)
+        Debug.Log(Physics2D.OverlapCircle(screenPosition, radiusSchip));
+         if (Physics2D.OverlapCircle(playerPos, radiusSchip) == jeff || Physics2D.OverlapCircle(screenPosition, radiusScreen) == null)
         {
             // found something
             Instantiate(gameobject, screenPosition, Quaternion.identity);

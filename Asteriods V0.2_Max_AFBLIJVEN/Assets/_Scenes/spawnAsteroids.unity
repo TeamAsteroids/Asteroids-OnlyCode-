@@ -291,7 +291,8 @@ MonoBehaviour:
   prefeb:
   - {fileID: 1388081304780422, guid: 21e66f27a0e89bb4fa8d64aefccd7b97, type: 2}
   ship: {fileID: 1334256460553160, guid: 6753fc5dca6474e4a9cc5020020ede38, type: 2}
-  radius: 10
+  radius: 500
+  radius1: 5
 --- !u!4 &1061262510
 Transform:
   m_ObjectHideFlags: 0
@@ -398,7 +399,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7bebca57f32f1da469b57d94f3ccd117, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxSpeed: 5
+  maxSpeed: 2
   rotSpeed: 90
 --- !u!61 &1784540189
 BoxCollider2D:
@@ -425,6 +426,22 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.99, y: 0.75}
   m_EdgeRadius: 0
+--- !u!114 &1784540190
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1784540185}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a051d5f9fdf0d94db76dd39c395b009, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  beforeWrap:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!1 &2143163214
 GameObject:
   m_ObjectHideFlags: 0
