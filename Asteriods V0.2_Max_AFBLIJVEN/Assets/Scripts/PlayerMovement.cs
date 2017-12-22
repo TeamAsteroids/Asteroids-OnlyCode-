@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour {
-    float maxSpeed = 4.5f;
-    float rotSpeed = 260f;
+    public float maxSpeed = 4.5f;
+    public float rotSpeed = 260f;
 	// Use this for initialization
 	void Start () {
 		
