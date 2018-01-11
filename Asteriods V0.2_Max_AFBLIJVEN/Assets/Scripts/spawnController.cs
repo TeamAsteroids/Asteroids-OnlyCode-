@@ -10,7 +10,6 @@ public class spawnController : MonoBehaviour
     private int i = 0;
     private int tele_num;
     private int prefeb_num;
-    public Transform[] teleport;
     public GameObject[] prefeb;
     public GameObject ship;
     private Camera cam;
@@ -21,23 +20,18 @@ public class spawnController : MonoBehaviour
     void Start()
     {
         cam = GetComponent<Camera>();
-  
+ 
+
 
     }
     private void Update()
     {
 
-        SpawnRandom(prefeb[0],ship);
-        
+        spawnold();
+
+
     }
 
-    void Spawn()
-    {
-        tele_num = Random.Range(0, 8);
-        prefeb_num = Random.Range(0, 3);
-
-        Instantiate(prefeb[prefeb_num], teleport[tele_num].position, teleport[tele_num].rotation);
-    }
 
 
     public void SpawnRandom(GameObject gameobject, GameObject playerObject)
@@ -66,5 +60,34 @@ public class spawnController : MonoBehaviour
 
         }
       
+    }
+    public void asteroidspawn(int i)
+    {
+        int iB;
+        int iM;
+        iB = i / 4;
+        Debug.Log(iB);
+        iM = (i % 4) / 2;
+        Debug.Log(iM);
+        i = (i % 4) % 2;
+        Debug.Log(i);
+        for (int jB = 0; jB < iB; jB++)
+        {
+            SpawnRandom(prefeb[0], ship);
+        }
+        for (int jM = 0; jM < iM; jM++)
+        {
+            SpawnRandom(prefeb[1], ship);
+        }
+        for (int j = 0; j < i; j++)
+        {
+            SpawnRandom(prefeb[2], ship);
+        }
+
+    }
+    public void spawnold()
+    {
+        SpawnRandom(prefeb[0], ship);
+
     }
 }
