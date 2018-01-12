@@ -29,6 +29,8 @@ public class ScoreMenuController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        highscore = HighScoreManager._instance.GetHighScore();
+
 
     }
 
@@ -48,14 +50,13 @@ public class ScoreMenuController : MonoBehaviour
            
         }
 
-        if (GUILayout.Button("Get LeaderBoard"))
+        if (GUILayout.Button("MainMenu"))
         {
-            highscore = HighScoreManager._instance.GetHighScore();
         }
 
-        if (GUILayout.Button("Clear Leaderboard"))
+        if (GUILayout.Button("Retry"))
         {
-            HighScoreManager._instance.ClearLeaderBoard();
+           // HighScoreManager._instance.ClearLeaderBoard();
         }
 
         GUILayout.Space(60);

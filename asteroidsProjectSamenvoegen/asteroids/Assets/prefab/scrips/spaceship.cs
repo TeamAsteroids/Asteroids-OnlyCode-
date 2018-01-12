@@ -25,10 +25,10 @@ public class spaceship : MonoBehaviour {
 
     void Start () {
         score = 0;
-
         gameOverPannel.SetActive(false);
         scoreText.text = "score " + score;
-        liveText.text = "leves " + Lives;
+        liveText.text = "levens " + Lives;
+        Invoke("Invulnerable", 2f);
 	}
 	
 	// Update is called once per frame
@@ -36,6 +36,10 @@ public class spaceship : MonoBehaviour {
     {
 
         //input fireKey
+        if (Lives > 0 )
+        {
+            gameOverPannel.SetActive(false);
+        }
 
         liveText.text = "Lives " + Lives;
         if (Lives <= 0)
@@ -43,6 +47,7 @@ public class spaceship : MonoBehaviour {
             //gameover
             GameOver();
 
+            gameOverPannel.SetActive(true);
 
         }
 
@@ -61,7 +66,7 @@ public class spaceship : MonoBehaviour {
         transform.position = Vector2.zero;
 
    
-        GetComponent<Collider2D>().enabled = true;
+        GetComponent<Collider2D>().enabled = false;
 
         Invoke("Invulnerable", 2f);
     }
@@ -70,24 +75,35 @@ public class spaceship : MonoBehaviour {
     {
         GetComponent<Collider2D>().enabled = true;
         //GetComponent<SpriteRenderer>().color = normalColor;
+        Debug.Log("vunerable");
     }
 
     private void OnCollisionEnter2D(Collision2D col)
     {
-        //GetComponent<SpriteRenderer>().enabled = true;
-        GetComponent<Collider2D>().enabled = false;
-        Invoke("Respawn", 0.2f);
+        if (col.relativeVelocity.magnitude > 0.03f) {
+            GetComponent<Collider2D>().enabled = false;
+            Invoke("Respawn", 0.2f);
             Lives--;
-            
-          
 
 
-                
+
+
+
             if (Lives <= 0)
             {
                 //gameover
                 GameOver();
-             
+                PlayerMovement move = GetComponent<PlayerMovement>();
+                PlayerShooting shoot = GetComponent<PlayerShooting>();
+                shoot.enabled = false;
+                move.enabled = false;
+                Debug.Log(gameOverPannel.scene) ;
+               
+
+
+
+
+            }
 
         }
 
@@ -97,8 +113,14 @@ public class spaceship : MonoBehaviour {
     }
     void GameOver()
     {
-        ScoreMenuController other = new ScoreMenuController();
-        other.Invoke("OnGui", 0f);
+
+        //or 
+        //GameObject Script = GameObject.Find("highscore") ;
+        //ScoreMenuController other = new ScoreMenuController();
+        //other.Invoke("OnGui", 0f);
+        //other.SetActive(false);
+        //Debug.Log(Script);
+        //Script.SetActive(true);
         
         CancelInvoke();
         //GetComponent<HighScore>().Invoke("start", 2f);
