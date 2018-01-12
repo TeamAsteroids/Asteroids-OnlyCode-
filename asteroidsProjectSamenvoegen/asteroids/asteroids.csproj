@@ -235,7 +235,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\prefab\scrips\Asteroid.cs" />
-    <Compile Include="Assets\prefab\scrips\Asteroid1.cs" />
     <Compile Include="Assets\prefab\scrips\AsteroidMove.cs" />
     <Compile Include="Assets\prefab\scrips\BulletMoveForward.cs" />
     <Compile Include="Assets\prefab\scrips\BullletController.cs" />
@@ -250,8 +249,10 @@
     <Compile Include="Assets\prefab\scrips\options2.cs" />
     <Compile Include="Assets\prefab\scrips\PlayerMovement.cs" />
     <Compile Include="Assets\prefab\scrips\PlayerShooting.cs" />
+    <Compile Include="Assets\prefab\scrips\PlayerSpawner.cs" />
     <Compile Include="Assets\prefab\scrips\ScoreMenuController.cs" />
     <Compile Include="Assets\prefab\scrips\ScreenWrapper.cs" />
+    <Compile Include="Assets\prefab\scrips\SelfDestruct.cs" />
     <Compile Include="Assets\prefab\scrips\spaceship.cs" />
     <Compile Include="Assets\prefab\scrips\spawnController.cs" />
   </ItemGroup>

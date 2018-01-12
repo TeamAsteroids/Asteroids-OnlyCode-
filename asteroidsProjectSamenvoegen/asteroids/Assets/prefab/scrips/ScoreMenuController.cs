@@ -16,13 +16,14 @@ public class ScoreMenuController : MonoBehaviour
         //EventManager._instance._buttonClick += ButtonClicked;
 
         highscore = new List<Scores>();
-
+        
     }
 
 
     void ButtonClicked(GameObject _obj)
     {
         print("Clicked button:" + _obj.name);
+        score = GetComponent<spaceship>().score;
     }
 
     // Update is called once per frame

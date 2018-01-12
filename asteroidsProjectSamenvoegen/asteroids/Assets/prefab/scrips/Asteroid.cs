@@ -7,13 +7,6 @@ public class Asteroid : MonoBehaviour {
     public float        maxThrust;
     public float        maxTorque;
     public Rigidbody2D  rb;
-    
-
-    private float        screenTop = Screen.height;
-    private float        screenBottom = 0;
-    private float        screenLeft = 0 ;
-    private float        screenRight = Screen.width;
-
     public int          asteroidSize; //3 = largde. 2 = mid. 1 = small.
 
     public GameObject   asteroidMid;
@@ -39,29 +32,6 @@ public class Asteroid : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        //check screen wraping
-
-        // Teleport the game object
-        if (transform.position.x > 9)
-        {
-
-            transform.position = new Vector3(-9, transform.position.y, 0);
-
-        }
-        else if (transform.position.x < -9)
-        {
-            transform.position = new Vector3(9, transform.position.y, 0);
-        }
-
-        else if (transform.position.y > 6)
-        {
-            transform.position = new Vector3(transform.position.x, -6, 0);
-        }
-
-        else if (transform.position.y < -6)
-        {
-            transform.position = new Vector3(transform.position.x, 6, 0);
-        }
 
     }
     private void OnTriggerEnter2D(Collider2D other)

@@ -12,13 +12,10 @@ public class spaceship : MonoBehaviour {
     public float        deathForce;
 
 
-    public int          lives;
+    public int          Lives;
     public int          score;
-    public GameObject   bullet;
     public GameObject   gameOverPannel;
 
-    private float       thrustInput;
-    private float       turnInput;
 
     public Color        inColor;
     public Color        normalColor;
@@ -31,7 +28,7 @@ public class spaceship : MonoBehaviour {
 
         gameOverPannel.SetActive(false);
         scoreText.text = "score " + score;
-        liveText.text = "leves " + lives;
+        liveText.text = "leves " + Lives;
 	}
 	
 	// Update is called once per frame
@@ -40,21 +37,16 @@ public class spaceship : MonoBehaviour {
 
         //input fireKey
 
-        if (Input.GetButtonDown("Fire1"))
+        liveText.text = "Lives " + Lives;
+        if (Lives <= 0)
         {
-           GameObject newBullet = Instantiate(bullet, transform.position, transform.rotation);
-            newBullet.GetComponent<Rigidbody2D>().AddRelativeForce(transform.up * bulletForce);
-            Destroy (newBullet, 3.0f);
+            //gameover
+            GameOver();
+
+
         }
 
 
-   
-
-    }
-    private void FixedUpdate()
-    {
-        rb.AddRelativeForce(Vector2.up * thrustInput);
-        //rb.AddTorque(-turnInput);
     }
 
     void ScorePoints(int pointsToAdd)
@@ -68,43 +60,50 @@ public class spaceship : MonoBehaviour {
         rb.velocity = Vector2.zero;
         transform.position = Vector2.zero;
 
-        SpriteRenderer sr = GetComponent<SpriteRenderer>();
-        sr.enabled = true;
-        sr.color = inColor;
-        Invoke("Invulnerable", 3f);
+   
+        GetComponent<Collider2D>().enabled = true;
+
+        Invoke("Invulnerable", 2f);
     }
 
     void Invulnerable()
     {
         GetComponent<Collider2D>().enabled = true;
-        GetComponent<SpriteRenderer>().color = normalColor;
+        //GetComponent<SpriteRenderer>().color = normalColor;
     }
 
     private void OnCollisionEnter2D(Collision2D col)
     {
-        if (col.relativeVelocity.magnitude > deathForce)
-        {
-            lives--;
-            liveText.text = "Lives " + lives;
-            //respan new live
-            GetComponent<SpriteRenderer>().enabled = false;
-            GetComponent<Collider2D>().enabled = false;
-            Invoke("Respawn", 3f);
+        //GetComponent<SpriteRenderer>().enabled = true;
+        GetComponent<Collider2D>().enabled = false;
+        Invoke("Respawn", 0.2f);
+            Lives--;
+            
+          
+
+
                 
-            if (lives<= 0)
+            if (Lives <= 0)
             {
                 //gameover
                 GameOver();
-            }
-            
-           
+             
+
         }
-        
+
+
+
+
     }
     void GameOver()
     {
+        ScoreMenuController other = new ScoreMenuController();
+        other.Invoke("OnGui", 0f);
+        
         CancelInvoke();
-        gameOverPannel.SetActive(true);
+        //GetComponent<HighScore>().Invoke("start", 2f);
+
+
     }
 
     public void PlayAgain()
