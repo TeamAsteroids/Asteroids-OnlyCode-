@@ -27,11 +27,15 @@ public class Asteroid : MonoBehaviour {
         rb.AddTorque(torque);
 
         player = GameObject.FindWithTag("Player");
+        gameObject.tag = "Asteroid";
         
     } 
 	
 	// Update is called once per frame
 	void Update () {
+        gameObject.tag = "Asteroid";
+        Debug.Log(gameObject.tag);
+
 
     }
     private void OnTriggerEnter2D(Collider2D other)

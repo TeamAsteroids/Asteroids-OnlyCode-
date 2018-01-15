@@ -22,6 +22,7 @@ public class spaceship : MonoBehaviour {
 
     public Text         scoreText;
     public Text         liveText;
+    internal ScoreMenuController end;
 
     void Start () {
         score = 0;
@@ -29,11 +30,13 @@ public class spaceship : MonoBehaviour {
         scoreText.text = "score " + score;
         liveText.text = "levens " + Lives;
         Invoke("Invulnerable", 2f);
-	}
+        end = GetComponent<ScoreMenuController>();
+    }
 	
 	// Update is called once per frame
 	void Update ()
     {
+
 
         //input fireKey
         if (Lives > 0 )
@@ -46,9 +49,16 @@ public class spaceship : MonoBehaviour {
         {
             //gameover
             GameOver();
+ 
 
             gameOverPannel.SetActive(true);
 
+        }
+        Debug.Log(GameObject.FindGameObjectsWithTag("Asteroid").Length);
+         
+        if (GameObject.FindGameObjectsWithTag("Asteroid").Length <= 0)
+        {
+            
         }
 
 
@@ -98,6 +108,12 @@ public class spaceship : MonoBehaviour {
                 shoot.enabled = false;
                 move.enabled = false;
                 Debug.Log(gameOverPannel.scene) ;
+                Invoke("gameOverPannel", 0.3f);
+                
+                ScoreMenuController sc = gameObject.AddComponent<ScoreMenuController>() as ScoreMenuController;
+                sc.score = score;
+
+                Debug.Log(end.enabled);
                
 
 

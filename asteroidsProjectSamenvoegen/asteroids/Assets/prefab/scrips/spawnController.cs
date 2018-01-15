@@ -20,7 +20,7 @@ public class spawnController : MonoBehaviour
     void Start()
     {
         cam = GetComponent<Camera>();
-        asteroidspawn(7);
+
  
 
 
@@ -28,7 +28,8 @@ public class spawnController : MonoBehaviour
     private void Update()
     {
 
-  
+            
+
 
     }
 
